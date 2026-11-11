@@ -1,6 +1,6 @@
 # SELENIUM-JAVA-PROJECT
 
-Maven Java Selenium + TestNG project testing a local HTML login page (`webpage/login.html`), packaged with a multi-stage `Dockerfile` and GitHub Actions CI/CD pipeline for Docker Hub (`uthkarshgowda/selenium-testng-automation`).
+Maven Java Selenium + TestNG project testing a local HTML login page (`webpage/login.html`), packaged with a multi-stage `Dockerfile` and GitHub Actions CI/CD pipeline for Docker Hub (`uthkarshgowda/selinium_testcase`).
 
 ## Project Structure
 
@@ -37,19 +37,19 @@ mvn clean test
 Build and run the test container locally:
 
 ```bash
-docker build -t uthkarshgowda/selenium-testng-automation:latest .
-docker run --rm uthkarshgowda/selenium-testng-automation:latest
+docker build -t uthkarshgowda/selinium_testcase:latest .
+docker run --rm uthkarshgowda/selinium_testcase:latest
 ```
 
 Push manually to Docker Hub:
 
 ```bash
 docker login -u uthkarshgowda
-docker push uthkarshgowda/selenium-testng-automation:latest
+docker push uthkarshgowda/selinium_testcase:latest
 ```
 
 ### GitHub Actions CI/CD
 
 On every push to `main`, [selenium-tests.yml](.github/workflows/selenium-tests.yml):
 1. Runs `mvn clean test` with JDK 17 and Chrome.
-2. Builds and pushes the Docker image to `uthkarshgowda/selenium-testng-automation` on Docker Hub (requires `DOCKERHUB_TOKEN` in repository **Settings → Secrets and variables → Actions**; `DOCKERHUB_USERNAME` defaults to `uthkarshgowda` if not explicitly set as a secret).
+2. Builds and pushes the Docker image to `uthkarshgowda/selinium_testcase` on Docker Hub (requires `DOCKERHUB_TOKEN` in repository **Settings → Secrets and variables → Actions**; `DOCKERHUB_USERNAME` defaults to `uthkarshgowda` if not explicitly set as a secret).

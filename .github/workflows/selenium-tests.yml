@@ -57,5 +57,5 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME || 'uthkarshgowda' }}/selenium-testng-automation:latest
-            ${{ secrets.DOCKERHUB_USERNAME || 'uthkarshgowda' }}/selenium-testng-automation:${{ github.sha }}
+            ${{ secrets.DOCKERHUB_USERNAME || 'uthkarshgowda' }}/selinium_testcase:latest
+            ${{ secrets.DOCKERHUB_USERNAME || 'uthkarshgowda' }}/selinium_testcase:${{ github.sha }}
