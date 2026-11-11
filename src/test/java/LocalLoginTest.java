@@ -1,4 +1,6 @@
 import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -14,11 +16,21 @@ public class LocalLoginTest {
     @BeforeMethod
     public void setUp() {
         ChromeOptions options = new ChromeOptions();
-        // Headless settings required for CI/CD runners (like GitHub Actions)
+        // Headless settings required for CI/CD runners (like GitHub Actions) and Docker
         options.addArguments("--headless=new");
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--window-size=1920,1080");
+
+        String chromeBin = System.getenv("CHROME_BIN");
+        if (chromeBin != null && !chromeBin.isBlank() && Files.exists(Paths.get(chromeBin))) {
+            options.setBinary(chromeBin);
+        }
+
+        String chromeDriverPath = System.getenv("CHROMEDRIVER_PATH");
+        if (chromeDriverPath != null && !chromeDriverPath.isBlank() && Files.exists(Paths.get(chromeDriverPath))) {
+            System.setProperty("webdriver.chrome.driver", chromeDriverPath);
+        }
 
         driver = new ChromeDriver(options);
 

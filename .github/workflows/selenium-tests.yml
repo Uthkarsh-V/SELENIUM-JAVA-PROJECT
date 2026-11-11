@@ -44,7 +44,7 @@ jobs:
       - name: Log in to Docker Hub
         uses: docker/login-action@v3
         with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          username: ${{ secrets.DOCKERHUB_USERNAME || 'uthkarshgowda' }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Set up Docker Buildx
@@ -57,5 +57,5 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/selenium-testng-automation:latest
-            ${{ secrets.DOCKERHUB_USERNAME }}/selenium-testng-automation:${{ github.sha }}
+            ${{ secrets.DOCKERHUB_USERNAME || 'uthkarshgowda' }}/selenium-testng-automation:latest
+            ${{ secrets.DOCKERHUB_USERNAME || 'uthkarshgowda' }}/selenium-testng-automation:${{ github.sha }}

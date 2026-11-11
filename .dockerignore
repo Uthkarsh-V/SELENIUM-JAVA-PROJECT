@@ -1,0 +1,10 @@
+.git
+.github
+.vscode
+.classpath
+.project
+.settings
+target
+test-output
+testng.out.xml
+*.log
